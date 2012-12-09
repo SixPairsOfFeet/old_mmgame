@@ -23,11 +23,11 @@ void GameGLWidget::renderMap() {
     glColor4f(1,1,1,1);
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
-    glTranslatef(scroll.x(), scroll.y(), 0);
-    glScalef(5, 5, 1);
+    glTranslatef(scroll.x() / 800., scroll.y() / 600., 0);
+    glScalef(1, 1, 1);
     glMatrixMode(GL_MODELVIEW);
 
-    drawTexture(QRect(0, 0, 800, 600), background_texture, GL_TEXTURE_2D);
+    drawTexture(QRect(0, 0, 1600, 1200), background_texture, GL_TEXTURE_2D);
 
     glMatrixMode(GL_TEXTURE);
     glPopMatrix();
@@ -129,7 +129,7 @@ void GameGLWidget::paintGL() {
 
 void GameGLWidget::resizeGL(int w, int h) {
     glViewport(0, 0, (GLint)w, (GLint)h);
-    glOrtho(0, 800, 600, 0, -10, 10);
+    glOrtho(0, 1600, 1200, 0, -10, 10);
 }
 
 void GameGLWidget::initializeGL() {

@@ -59,7 +59,6 @@ void PlayerEntity::render() {
 void PlayerEntity::processEvent(ManyMouseEvent &ev) {
     switch (ev.type) {
         case MANYMOUSE_EVENT_BUTTON:
-            qDebug() << "button event" << ev.value << ev.item;
             if (ev.value) {
                 state = FOLLOWING_MOUSE;
                 current_target = cursor;
@@ -78,6 +77,11 @@ void PlayerEntity::processEvent(ManyMouseEvent &ev) {
             break;
     }
     // FIXME: constrict to a circle instead.
-    cursor.setX(max(min(800, cursor.x()), 0));
-    cursor.setY(max(min(600, cursor.y()), 0));
+    QPointF diff = pos - cursor;
+    double len_2 = pow(diff.x(), 2) + pow(diff.y(), 2);
+    if (len_2 > 600 * 600) {
+        diff /= sqrt(len_2);
+        diff *= 600;
+        cursor = (pos - diff).toPoint();
+    }
 }
