@@ -13,8 +13,21 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        gamewindow.cpp
+        gamewindow.cpp \
+    x11_xinput2.c \
+    windows_wminput.c \
+    manymouse.c \
+    macosx_hidutilities.c \
+    macosx_hidmanager.c \
+    linux_evdev.c \
+    assignmentgadget.cpp
 
-HEADERS  += gamewindow.h
+HEADERS  += gamewindow.h \
+    manymouse.h \
+    assignmentgadget.h
 
-FORMS    += gamewindow.ui
+FORMS    += gamewindow.ui \
+    assignmentgadget.ui
+
+RESOURCES += \
+    guires.qrc
