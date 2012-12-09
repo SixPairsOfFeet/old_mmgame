@@ -14,7 +14,10 @@ class AssignmentGadget : public QWidget
 public:
     explicit AssignmentGadget(QWidget *parent = 0);
     ~AssignmentGadget();
-    
+
+public slots:
+    void updateMice();
+
 private:
     Ui::AssignmentGadget *ui;
 };

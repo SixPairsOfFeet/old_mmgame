@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,11 +20,19 @@ SOURCES += main.cpp\
     macosx_hidutilities.c \
     macosx_hidmanager.c \
     linux_evdev.c \
-    assignmentgadget.cpp
+    assignmentgadget.cpp \
+    gameglwidget.cpp \
+    gamestate.cpp \
+    resourcepoint.cpp \
+    playerinput.cpp
 
 HEADERS  += gamewindow.h \
     manymouse.h \
-    assignmentgadget.h
+    assignmentgadget.h \
+    gameglwidget.h \
+    gamestate.h \
+    resourcepoint.h \
+    playerinput.h
 
 FORMS    += gamewindow.ui \
     assignmentgadget.ui
