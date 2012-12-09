@@ -4,6 +4,7 @@
 #include <QList>
 #include <QPoint>
 #include "entity.h"
+#include "playerentity.h"
 
 class GameState
 {
@@ -12,7 +13,7 @@ public:
 
     void step(float dt);
 
-    QList<QPoint> players;
+    QList<PlayerEntity *> players;
     QList<Entity *> entities;
 
     void spawnEntity(Entity *);

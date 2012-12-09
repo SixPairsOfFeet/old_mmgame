@@ -1,6 +1,8 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 
+#include "playerentity.h"
+
 #include "manymouse.h"
 
 #include <QTimer>
@@ -24,6 +26,8 @@ GameWindow::GameWindow(QWidget *parent) :
 
     connect(&ungrabTimer, SIGNAL(timeout()), this, SLOT(release()));
     ungrabTimer.setSingleShot(true);
+
+    connect(ui->actionAssign_players, SIGNAL(triggered()), this, SLOT(popupPlayerSelectionDlg()));
 }
 
 void GameWindow::timerEvent(QTimerEvent *) {
@@ -34,12 +38,15 @@ void GameWindow::timerEvent(QTimerEvent *) {
             if (ev.type == MANYMOUSE_EVENT_BUTTON) {
                 // click to join, i guess.
                 qDebug() << "player" << ev.device << ManyMouse_DeviceName(ev.device) << "joined the fun!";
-                plin[ev.device] = new PlayerInput(ev.device, state);
+                PlayerEntity *ent = new PlayerEntity();
+                state->players.append(ent);
+                plin[ev.device] = new PlayerInput(ev.device, state, state->players.size()-1);
             }
         } else {
             plin[ev.device]->processEvent(ev);
         }
     }
+    state->step(1000 / 60.);
     gglw->updateGL(); // forgetting this is ... clever
 }
 

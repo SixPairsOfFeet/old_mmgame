@@ -40,14 +40,14 @@ Map::Map(vector<ivec2> &points,
     minX(minX), minY(minY)
 {
 
-    for (int i=0; i<10; i++) { // 10 ?!?!
-        if (i != 0) {
-            for (int i=0; i<num_points; i++) {
-                points[i] = sites[i].center();
-            }
-        }
+//    for (int i=0; i<10; i++) { // 10 ?!?!
+//        if (i != 0) {
+//            for (int i=0; i<num_points; i++) {
+//                points[i] = sites[i].center();
+//            }
+//        }
         gen(points);
-    }
+  //  }
 }
 
 void Map::gen(vector<ivec2>& points) {

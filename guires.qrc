@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>res/window_border.png</file>
         <file>res/resource.png</file>
+        <file>res/ground.png</file>
+        <file>res/detailstuff.png</file>
+        <file>res/player_vehicle.png</file>
     </qresource>
 </RCC>

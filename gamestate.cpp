@@ -27,4 +27,8 @@ void GameState::step(float dt) {
     foreach(int idx, delIdxs) {
         entities.removeAt(idx);
     }
+
+    foreach(PlayerEntity *ent, players) {
+        ent->step(dt);
+    }
 }

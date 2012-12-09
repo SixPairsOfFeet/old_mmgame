@@ -12,7 +12,6 @@ ResourcePoint::ResourcePoint(QPoint pos, int resPerTick) : pos(pos), resPerTick(
 void ResourcePoint::setupRes(QGLWidget *glw) {
     QPixmap foo = QPixmap(":/res/resource.png");
     image_id = glw->bindTexture(foo);
-    foo.save("/tmp/foo.png");
 }
 
 void ResourcePoint::render() {

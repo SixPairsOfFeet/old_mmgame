@@ -8,7 +8,7 @@
 class PlayerInput
 {
 public:
-    PlayerInput(int mm_device, GameState *state);
+    PlayerInput(int mm_device, GameState *state, int player_id);
     bool processEvent(ManyMouseEvent &ev);
 
     QPoint getPos();

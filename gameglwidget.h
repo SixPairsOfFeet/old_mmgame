@@ -3,6 +3,7 @@
 
 #include "gamestate.h"
 #include <QGLWidget>
+#include <QList>
 
 class GameGLWidget : public QGLWidget
 {
@@ -13,7 +14,8 @@ private:
     virtual void resizeGL(int w, int h);
     GameState *state;
 
-    void drawSceneForPlayer(int plid);
+    void drawSceneForPlayer(QList<bool>);
+    void renderMap();
 
 public:
     explicit GameGLWidget(QWidget *parent, GameState *state);
@@ -25,6 +27,6 @@ public slots:
 };
 
 extern GameGLWidget *active_gglw;
-extern int current_player;
+extern QList<bool> active_players;
 
 #endif // GAMEGLWIDGET_H

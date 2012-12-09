@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     playerinput.cpp \
     entity.cpp \
     voronoi.cpp \
-    voronoi_map.cpp
+    voronoi_map.cpp \
+    playerentity.cpp
 
 HEADERS  += gamewindow.h \
     manymouse.h \
@@ -40,7 +41,8 @@ HEADERS  += gamewindow.h \
     entity.h \
     voronoi-c.hpp \
     voronoi.hpp \
-    voronoi_map.hpp
+    voronoi_map.hpp \
+    playerentity.h
 
 FORMS    += gamewindow.ui \
     assignmentgadget.ui
