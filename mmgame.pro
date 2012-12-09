@@ -31,3 +31,6 @@ FORMS    += gamewindow.ui \
 
 RESOURCES += \
     guires.qrc
+
+OTHER_FILES += \
+    ressrc/window_border.xcf
