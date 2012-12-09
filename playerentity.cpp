@@ -27,7 +27,7 @@ void PlayerEntity::step(float dt) {
         if (glm::length(diff) <= 1) {
             state = IDLING;
         } else {
-            diff = (diff / glm::length(diff)) * (0.1f * dt);
+            diff = (diff / glm::length(diff)) * (0.2f * dt);
             pos -= QPointF(diff.x, diff.y);
         }
     }

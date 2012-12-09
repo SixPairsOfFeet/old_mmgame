@@ -26,6 +26,7 @@ GameWindow::GameWindow(QWidget *parent) :
 
     connect(&ungrabTimer, SIGNAL(timeout()), this, SLOT(release()));
     ungrabTimer.setSingleShot(true);
+    ungrabTimer.setInterval(10000);
 
     connect(ui->actionAssign_players, SIGNAL(triggered()), this, SLOT(popupPlayerSelectionDlg()));
 }

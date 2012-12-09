@@ -23,23 +23,26 @@ void GameGLWidget::renderMap() {
     glColor4f(1,1,1,1);
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
-    glTranslatef(scroll.x() / 800., scroll.y() / 600., 0);
-    glScalef(1, 1, 1);
+    glTranslatef(scroll.x()/256, scroll.y()/256, 0);
     glMatrixMode(GL_MODELVIEW);
 
-    drawTexture(QRect(0, 0, 1600, 1200), background_texture, GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, background_texture);
+    glBegin(GL_QUADS);
+    glTexCoord2i(800 / 128, 600 / 128);
+    glVertex2f(0, 0);
+    glTexCoord2i(0, 600 / 128);
+    glVertex2f(1600,0);
+    glTexCoord2i(0, 0);
+    glVertex2f(1600,1200);
+    glTexCoord2i(800 / 128, 0);
+    glVertex2f(0,1200);
+    glEnd();
 
     glMatrixMode(GL_TEXTURE);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
 
-//    glBindTexture(GL_TEXTURE_2D, background_texture);
-//    glBegin(GL_QUAD);
-//    glVertex2f(0, 0);
-//    glVertex2f(800,0);
-//    glVertex2f(800,600);
 
-//    glEnd(GL_QUAD);
 
     glPushMatrix();
     glTranslatef(scroll.x(), scroll.y(), 0);
@@ -77,9 +80,8 @@ void GameGLWidget::step(float dt) {
     foreach (PlayerEntity *player, state->players) {
         midpoint += player->pos;
     }
-    qDebug() << state->players.size();
-    midpoint *= state->players.size();
-    scroll = -midpoint + QPointF(400, 300);
+    midpoint /= state->players.size();
+    scroll = -midpoint + QPointF(800, 600);
 }
 
 void GameGLWidget::paintGL() {
@@ -137,7 +139,6 @@ void GameGLWidget::initializeGL() {
     PlayerEntity::setupRes(this);
     detail_thing_texture = bindTexture(QPixmap(":/res/detailstuff.png"));
     background_texture = bindTexture(QPixmap(":/res/ground.png"));
-    qDebug() << detail_thing_texture << background_texture;
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
