@@ -6,6 +6,8 @@
 #include "voronoi.hpp"
 #include "voronoi_map.hpp"
 
+#include "gamestate.h"
+
 GameGLWidget *active_gglw;
 QList<bool> active_players;
 

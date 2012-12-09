@@ -7,7 +7,7 @@
 class SpriteEntity : public Entity
 {
 public:
-    SpriteEntity(QString res_path, QPointF pos);
+    SpriteEntity(QString *res_path, QPointF pos);
 
     virtual void render();
     static void setupRes(QGLWidget *);
@@ -15,8 +15,8 @@ public:
     QPointF pos;
 
 protected:
-    QString res_path;
-    QPointF center_point;
+    static QString res_path;
+    static QPointF center_point;
     static GLuint image_id;
 };
 

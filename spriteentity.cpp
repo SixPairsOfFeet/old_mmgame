@@ -1,6 +1,6 @@
 #include "spriteentity.h"
 
-SpriteEntity::SpriteEntity(QString res_path, QPointF pos) :
+SpriteEntity::SpriteEntity(QString *res_path, QPointF pos) :
     res_path(res_path), pos(pos)
 {
 }
@@ -12,7 +12,7 @@ void SpriteEntity::setupRes(QGLWidget *glw) {
     center_point = QPointF(img.rect().bottomRight()) / 2;
 }
 
-void PlayerEntity::render() {
+void SpriteEntity::render() {
     glEnable(GL_TEXTURE_2D);
 
     glColor4f(1,1,1,1);

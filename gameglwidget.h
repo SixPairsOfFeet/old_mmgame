@@ -1,10 +1,11 @@
 #ifndef GAMEGLWIDGET_H
 #define GAMEGLWIDGET_H
 
-#include "gamestate.h"
 #include <QGLWidget>
 #include <QList>
 #include <QPointF>
+
+class GameState;
 
 class GameGLWidget : public QGLWidget
 {

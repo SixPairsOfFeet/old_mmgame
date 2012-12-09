@@ -9,10 +9,9 @@
 using std::min;
 using std::max;
 
-PlayerEntity::PlayerEntity() :
-    SpriteEntity("player_vehicle", QPointF(100, 100))
+PlayerEntity::PlayerEntity()
 {
-
+    SpriteEntity("player_vehicle", QPointF(100, 100))
     state = MOVING;
 }
 
