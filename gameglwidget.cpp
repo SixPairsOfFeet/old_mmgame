@@ -8,7 +8,7 @@ GameGLWidget *active_gglw;
 GameGLWidget::GameGLWidget(QWidget *parent, GameState *state) :
     QGLWidget(parent), state(state)
 {
-    ResourcePoint::setupRes(this);
+
 }
 
 void GameGLWidget::paintGL() {
@@ -21,6 +21,7 @@ void GameGLWidget::paintGL() {
     }
 
     // draw players
+    glDisable(GL_TEXTURE_2D);
     foreach (QPoint player, state->players) {
         glPushMatrix();
         glTranslatef(player.x(), player.y(), 0);
@@ -41,8 +42,8 @@ void GameGLWidget::resizeGL(int w, int h) {
 }
 
 void GameGLWidget::initializeGL() {
+    ResourcePoint::setupRes(this);
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glDisable(GL_TEXTURE_2D);
 }

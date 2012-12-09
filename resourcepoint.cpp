@@ -18,7 +18,7 @@ void ResourcePoint::setupRes(QGLWidget *glw) {
 void ResourcePoint::render() {
     glEnable(GL_TEXTURE_2D);
     glColor4f(1,1,1,1);
-    active_gglw->drawTexture(QRect(pos, QSize(50, 50)), image_id);
+    active_gglw->drawTexture(pos - QPoint(32,32), image_id, GL_TEXTURE_2D);
     glDisable(GL_TEXTURE_2D);
 }
 

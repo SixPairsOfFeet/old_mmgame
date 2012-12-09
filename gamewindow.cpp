@@ -35,7 +35,7 @@ void GameWindow::timerEvent(QTimerEvent *) {
             plin[ev.device]->processEvent(ev);
         }
     }
-    gglw->update(); // forgetting this is ... clever
+    gglw->updateGL(); // forgetting this is ... clever
 }
 
 void GameWindow::popupPlayerSelectionDlg()
