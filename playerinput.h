@@ -2,15 +2,22 @@
 #define PLAYERINPUT_H
 
 #include "manymouse.h"
+#include <QPoint>
+#include "gamestate.h"
 
 class PlayerInput
 {
 public:
-    PlayerInput(int mm_device);
-    void processEvent(ManyMouseEvent &ev);
+    PlayerInput(int mm_device, GameState *state);
+    bool processEvent(ManyMouseEvent &ev);
+
+    QPoint getPos();
 
 private:
     int mm_device;
+    int player_id;
+    QPoint pos;
+    GameState *state;
 };
 
 #endif // PLAYERINPUT_H

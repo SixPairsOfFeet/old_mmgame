@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     gameglwidget.cpp \
     gamestate.cpp \
     resourcepoint.cpp \
-    playerinput.cpp
+    playerinput.cpp \
+    entity.cpp
 
 HEADERS  += gamewindow.h \
     manymouse.h \
@@ -32,7 +33,8 @@ HEADERS  += gamewindow.h \
     gameglwidget.h \
     gamestate.h \
     resourcepoint.h \
-    playerinput.h
+    playerinput.h \
+    entity.h
 
 FORMS    += gamewindow.ui \
     assignmentgadget.ui

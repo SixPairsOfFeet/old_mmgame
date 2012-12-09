@@ -2,10 +2,11 @@
 #define GAMEWINDOW_H
 
 #include <QMainWindow>
-#include <QList>
+#include <QHash>
 #include "gameglwidget.h"
 #include "assignmentgadget.h"
 #include "playerinput.h"
+#include "gamestate.h"
 
 namespace Ui {
 class GameWindow;
@@ -26,8 +27,9 @@ private:
     Ui::GameWindow *ui;
     GameGLWidget *gglw;
 
-    QList<PlayerInput> plin;
+    QHash<int, PlayerInput*> plin;
     AssignmentGadget *assgad; // haha, i wrote ass
+    GameState *state;
 
     void timerEvent(QTimerEvent *);
 };

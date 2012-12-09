@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>res/window_border.png</file>
+        <file>res/resource.png</file>
     </qresource>
 </RCC>
