@@ -15,8 +15,9 @@ public:
     virtual void step(float dt);
     virtual void render();
 
-private:
     QPointF pos;
+
+private:
     QPoint cursor;
     QPoint current_target;
     enum {

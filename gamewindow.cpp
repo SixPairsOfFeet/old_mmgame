@@ -47,6 +47,7 @@ void GameWindow::timerEvent(QTimerEvent *) {
         }
     }
     state->step(1000 / 60.);
+    gglw->step(1000 / 60.);
     gglw->updateGL(); // forgetting this is ... clever
 }
 

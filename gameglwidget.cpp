@@ -23,6 +23,7 @@ void GameGLWidget::renderMap() {
     glColor4f(1,1,1,1);
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
+    glTranslatef(scroll.x(), scroll.y(), 0);
     glScalef(5, 5, 1);
     glMatrixMode(GL_MODELVIEW);
 
@@ -40,6 +41,8 @@ void GameGLWidget::renderMap() {
 
 //    glEnd(GL_QUAD);
 
+    glPushMatrix();
+    glTranslatef(scroll.x(), scroll.y(), 0);
     srand(100);
 
     for(int i = 0; i < 1000; i++) {
@@ -48,6 +51,7 @@ void GameGLWidget::renderMap() {
         drawTexture(pos - QPoint(32,32), detail_thing_texture, GL_TEXTURE_2D);
     }
     glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
 }
 
 void GameGLWidget::drawSceneForPlayer(QList<bool> players) {
@@ -55,6 +59,8 @@ void GameGLWidget::drawSceneForPlayer(QList<bool> players) {
 
     renderMap();
 
+    glPushMatrix();
+    glTranslatef(scroll.x(), scroll.y(), 0);
     // draw scene
     foreach (Entity *ent, state->entities) {
         ent->render();
@@ -63,6 +69,17 @@ void GameGLWidget::drawSceneForPlayer(QList<bool> players) {
     foreach (PlayerEntity *ent, state->players) {
         ent->render();
     }
+    glPopMatrix();
+}
+
+void GameGLWidget::step(float dt) {
+    QPointF midpoint;
+    foreach (PlayerEntity *player, state->players) {
+        midpoint += player->pos;
+    }
+    qDebug() << state->players.size();
+    midpoint *= state->players.size();
+    scroll = -midpoint + QPointF(400, 300);
 }
 
 void GameGLWidget::paintGL() {

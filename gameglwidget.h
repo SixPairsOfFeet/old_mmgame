@@ -4,6 +4,7 @@
 #include "gamestate.h"
 #include <QGLWidget>
 #include <QList>
+#include <QPointF>
 
 class GameGLWidget : public QGLWidget
 {
@@ -17,8 +18,11 @@ private:
     void drawSceneForPlayer(QList<bool>);
     void renderMap();
 
+    QPointF scroll;
+
 public:
     explicit GameGLWidget(QWidget *parent, GameState *state);
+    void step(float dt);
     
 signals:
     
