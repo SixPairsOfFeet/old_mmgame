@@ -1,11 +1,11 @@
 #ifndef PLAYERENTITY_H
 #define PLAYERENTITY_H
 
-#include "entity.h"
+#include "spriteentity.h"
 #include "manymouse.h"
 #include <QPointF>
 
-class PlayerEntity : public Entity
+class PlayerEntity : public SpriteEntity
 {
 public:
     PlayerEntity();
@@ -14,8 +14,6 @@ public:
     virtual void processEvent(ManyMouseEvent &);
     virtual void step(float dt);
     virtual void render();
-
-    QPointF pos;
 
 private:
     QPoint cursor;

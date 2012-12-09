@@ -9,16 +9,14 @@
 using std::min;
 using std::max;
 
-PlayerEntity::PlayerEntity()
+PlayerEntity::PlayerEntity() :
+    SpriteEntity("player_vehicle", QPointF(100, 100))
 {
+
     state = MOVING;
-    pos = QPoint(100, 100);
 }
 
-GLuint PlayerEntity::image_id;
-void PlayerEntity::setupRes(QGLWidget *glw) {
-    image_id = glw->bindTexture(QPixmap(":/res/player_vehicle.png"));
-}
+
 
 void PlayerEntity::step(float dt) {
     if (state == MOVING || state == FOLLOWING_MOUSE) {
@@ -34,10 +32,7 @@ void PlayerEntity::step(float dt) {
 }
 
 void PlayerEntity::render() {
-    glEnable(GL_TEXTURE_2D);
-
-    glColor4f(1,1,1,1);
-    active_gglw->drawTexture(pos - QPoint(32,32), image_id, GL_TEXTURE_2D);
+    this->SpriteEntity::render();
 
     glDisable(GL_TEXTURE_2D);
     glColor4f(1, 0, 0, 1);
@@ -52,18 +47,20 @@ void PlayerEntity::render() {
         glVertex2f(0,-5);
         glVertex2f(0,10);
         glVertex2f(0,5);
-        glEnd();
+    glEnd();
     glPopMatrix();
 }
 
 void PlayerEntity::processEvent(ManyMouseEvent &ev) {
     switch (ev.type) {
         case MANYMOUSE_EVENT_BUTTON:
-            if (ev.value) {
-                state = FOLLOWING_MOUSE;
-                current_target = cursor;
-            } else {
-                state = MOVING;
+            if (ev.item == 1) {
+                if (ev.value) {
+                    state = FOLLOWING_MOUSE;
+                    current_target = cursor;
+                } else {
+                    state = MOVING;
+                }
             }
             break;
        case MANYMOUSE_EVENT_RELMOTION:
