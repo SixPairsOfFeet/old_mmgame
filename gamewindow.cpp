@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <QDebug>
 
+QTimer ungrabTimer;
+
 GameWindow::GameWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)
@@ -19,6 +21,9 @@ GameWindow::GameWindow(QWidget *parent) :
     assgad->hide();
 
     startTimer(1000 / 60);
+
+    connect(&ungrabTimer, SIGNAL(timeout()), this, SLOT(release()));
+    ungrabTimer.setSingleShot(true);
 }
 
 void GameWindow::timerEvent(QTimerEvent *) {
@@ -45,5 +50,22 @@ void GameWindow::popupPlayerSelectionDlg()
 
 GameWindow::~GameWindow()
 {
+    releaseMouse();
     delete ui;
+}
+
+void GameWindow::release() {
+    qDebug() << "releasing the mouse";
+    releaseMouse();
+    qApp->restoreOverrideCursor();
+}
+
+void GameWindow::mousePressEvent(QMouseEvent *) {
+    if (mouseGrabber() != this) {
+        qDebug() << "grabbing the mouse";
+        grabMouse();
+        qApp->setOverrideCursor(Qt::BlankCursor);
+    }
+    ungrabTimer.stop();
+    ungrabTimer.start();
 }

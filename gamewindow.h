@@ -22,6 +22,7 @@ public:
 
 public slots:
     void popupPlayerSelectionDlg();
+    void release();
 
 private:
     Ui::GameWindow *ui;
@@ -32,6 +33,8 @@ private:
     GameState *state;
 
     void timerEvent(QTimerEvent *);
+
+    void mousePressEvent(QMouseEvent *);
 };
 
 #endif // GAMEWINDOW_H

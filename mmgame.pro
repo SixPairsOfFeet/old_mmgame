@@ -6,11 +6,12 @@
 
 QT       += core gui opengl
 
+QMAKE_CXXFLAGS += -std=c++11
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = mmgame
 TEMPLATE = app
-
 
 SOURCES += main.cpp\
         gamewindow.cpp \
@@ -25,7 +26,9 @@ SOURCES += main.cpp\
     gamestate.cpp \
     resourcepoint.cpp \
     playerinput.cpp \
-    entity.cpp
+    entity.cpp \
+    voronoi.cpp \
+    voronoi_map.cpp
 
 HEADERS  += gamewindow.h \
     manymouse.h \
@@ -34,7 +37,10 @@ HEADERS  += gamewindow.h \
     gamestate.h \
     resourcepoint.h \
     playerinput.h \
-    entity.h
+    entity.h \
+    voronoi-c.hpp \
+    voronoi.hpp \
+    voronoi_map.hpp
 
 FORMS    += gamewindow.ui \
     assignmentgadget.ui

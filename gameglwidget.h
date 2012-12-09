@@ -13,6 +13,8 @@ private:
     virtual void resizeGL(int w, int h);
     GameState *state;
 
+    void drawSceneForPlayer(int plid);
+
 public:
     explicit GameGLWidget(QWidget *parent, GameState *state);
     
@@ -23,5 +25,6 @@ public slots:
 };
 
 extern GameGLWidget *active_gglw;
+extern int current_player;
 
 #endif // GAMEGLWIDGET_H
