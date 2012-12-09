@@ -7,6 +7,7 @@
 
 ResourcePoint::ResourcePoint(QPoint pos, int resPerTick) : pos(pos), resPerTick(resPerTick)
 {
+    deathWish = false;
 }
 
 void ResourcePoint::setupRes(QGLWidget *glw) {

@@ -2,6 +2,8 @@
 
 #include "resourcepoint.h"
 
+#include <QDebug>
+
 GameState::GameState()
 {
     spawnEntity(new ResourcePoint(QPoint(50, 50)));
@@ -25,6 +27,7 @@ void GameState::step(float dt) {
         index++;
     }
     foreach(int idx, delIdxs) {
+        qDebug() << "killed an entity";
         entities.removeAt(idx);
     }
 

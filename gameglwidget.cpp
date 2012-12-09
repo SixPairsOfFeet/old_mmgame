@@ -42,8 +42,6 @@ void GameGLWidget::renderMap() {
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
 
-
-
     glPushMatrix();
     glTranslatef(scroll.x(), scroll.y(), 0);
     srand(100);
@@ -130,8 +128,12 @@ void GameGLWidget::paintGL() {
 }
 
 void GameGLWidget::resizeGL(int w, int h) {
+    // TODO: make it square
     glViewport(0, 0, (GLint)w, (GLint)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     glOrtho(0, 1600, 1200, 0, -10, 10);
+    glMatrixMode(GL_MODELVIEW);
 }
 
 void GameGLWidget::initializeGL() {
